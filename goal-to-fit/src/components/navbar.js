@@ -15,13 +15,13 @@ export default class Navbar extends Component {
             </Link>
           </li>
           <li className="navbar-item">
-            <Link to="/create" className="nav-link">
-              Create Activity
+            <Link to="/user" className="nav-link">
+              Create User
             </Link>
           </li>
           <li className="navbar-item">
-            <Link to="/user" className="nav-link">
-              Create User
+            <Link to="/create" className="nav-link">
+              Create Activity
             </Link>
           </li>
         </ul>
