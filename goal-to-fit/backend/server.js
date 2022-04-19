@@ -1,57 +1,15 @@
-const express = require("express");
-const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const cors = require("cors");
+const app = require("./api/index");
 
-const PORT = process.env.PORT || 4001;
-require("dotenv").config();
-
-const exercisesRouter = require("./api/exercises");
-const usersRouter = require("./api/users");
-
-const app = express();
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(
-  cors({
-    origin: "*",
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  })
-);
-app.use(express.json());
-
-const connection = mongoose.connection;
-connection.once("open", () => {
-  console.log("MongoDB database connection established successfully");
-});
-
-app.use("/exercises", exercisesRouter);
-app.use("/users", usersRouter);
-
-const uri = process.env.ATLAS_URI;
-// mongoose.connect(uri, {
-//   useNewUrlParser: true,
-//   useCreateIndex: true,
-//   useUnifiedTopology: true,
-// });
+const config = require("./config");
 
 const boot = async () => {
   // Connect to mongodb
-  await mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-  });
+  await mongoose.connect(config.mongoUri, config.mongoOptions);
   // Start express server
-  app.listen(PORT, () => {
-    console.log(`Server is listening on port ${PORT}`);
+  app.listen(config.port, () => {
+    console.log(`Server is listening on port ${config.port}`);
   });
 };
 
 boot();
-
-// app.listen(port, () => {
-//   console.log(`Server is running on port: ${port}`);
-// });
