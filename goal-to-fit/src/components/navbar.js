@@ -11,16 +11,19 @@ export default class Navbar extends Component {
         <ul className="nav justify-content-end">
           <li className="navbar-item">
             <Link to="/" className="nav-link">
+              <i class="fa-solid fa-house"></i>
               Report
             </Link>
           </li>
           <li className="navbar-item">
             <Link to="/user" className="nav-link">
+              <i class="fa-solid fa-user"></i>
               Create User
             </Link>
           </li>
           <li className="navbar-item">
             <Link to="/create" className="nav-link">
+              <i class="fa-solid fa-person-running"></i>
               Create Activity
             </Link>
           </li>
