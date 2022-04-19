@@ -6,8 +6,8 @@ const cors = require("cors");
 const PORT = process.env.PORT || 4001;
 require("dotenv").config();
 
-const exercisesRouter = require("./routes/exercises");
-const usersRouter = require("./routes/users");
+const exercisesRouter = require("./api/exercises");
+const usersRouter = require("./api/users");
 
 const app = express();
 
