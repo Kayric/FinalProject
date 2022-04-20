@@ -11,7 +11,7 @@ require("dotenv").config();
  * I suggest using mongoUri as below and pass other things as options
  **/
 module.exports = {
-  isVercel: process.env.IS_VERCEL || true,
+  isVercel: process.env.IS_VERCEL || false,
   port: process.env.PORT || 4001,
   mongoUri: process.env.MONGO_URI,
   mongoOptions: {

@@ -20,7 +20,6 @@ if (config.isVercel) {
 }
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
   cors({
@@ -28,7 +27,7 @@ app.use(
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   })
 );
-app.use(express.json());
+
 app.use("/exercises", exercisesRouter);
 app.use("/users", usersRouter);
 
