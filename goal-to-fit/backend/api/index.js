@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const logger = require("morgan");
 
 require("dotenv").config();
 const config = require("../config");
@@ -24,11 +25,15 @@ app.use(bodyParser.json());
 app.use(
   cors({
     origin: "*",
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    optionsSuccessStatus: 200,
   })
 );
 
 app.use("/exercises", exercisesRouter);
 app.use("/users", usersRouter);
+
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 module.exports = app;
