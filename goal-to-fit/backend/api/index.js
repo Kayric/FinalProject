@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const logger = require("morgan");
 
 require("dotenv").config();
 const config = require("../config");
@@ -32,8 +31,8 @@ app.use(
 app.use("/exercises", exercisesRouter);
 app.use("/users", usersRouter);
 
-app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.get("/", (req, res) => {
+  res.send("hellow  world");
+});
 
 module.exports = app;
