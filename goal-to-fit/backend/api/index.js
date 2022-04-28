@@ -11,6 +11,8 @@ const exercisesRouter = require("../routes/exercises");
 const usersRouter = require("../routes/users");
 
 const app = express();
+app.use("/exercises", exercisesRouter);
+app.use("/users", usersRouter);
 
 if (config.isVercel) {
   app.use(async (req, res, next) => {
