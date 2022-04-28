@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-require("dotenv").config();
+// require("dotenv").config();
 const config = require("../config");
 const PORT = config.port;
 
@@ -30,9 +30,5 @@ app.use(
 
 app.use("/exercises", exercisesRouter);
 app.use("/users", usersRouter);
-
-app.get("/", (req, res) => {
-  res.send("hellow  world");
-});
 
 module.exports = app;
